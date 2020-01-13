@@ -27,9 +27,6 @@ class ApiService {
     );
 
     List<Chat> response = [chat_1, chat_2, chat_3];
-    // response = await Future.delayed(Duration(seconds: 5)).then((_) {
-    //   response = 
-    // });
 
     return response;
   }

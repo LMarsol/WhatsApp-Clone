@@ -9,30 +9,25 @@ class Chats extends StatefulWidget {
 }
 
 class _ChatsState extends State<Chats> {
-  bool _isLoading = true;
-  List<Chat> _chats;
+  List<Chat> _chats = [];
 
   @override
   void initState() {
-    getData();
     super.initState();
+    getData();
   }
 
   void getData() async {
     await ApiService().fetchData().then((response) {
-      _chats = response;
-      print(response);
-    });
-    setState(() {
-      _isLoading = false;
+      setState(() {
+        _chats = response;
+      });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return _isLoading ? Center(
-      child: CircularProgressIndicator(),
-    ) : ListView(
+    return ListView(
       padding: EdgeInsets.all(12.0),
       shrinkWrap: true,
       children: _buildChats(),
